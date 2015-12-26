@@ -1,0 +1,117 @@
+$nav-width: 120px;
+$green: #0BB396;
+
+
+.vr-menu-sidebar {
+  width: $nav_width;
+  padding: 12px;
+  background-image: -webkit-linear-gradient(top, #564F5D 0%, #4E5667 100%);
+  background-image: -o-linear-gradient(top, #564F5D 0%, #4E5667 100%);
+  background-image: linear-gradient(to bottom, #564F5D 0%, #4E5667 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff564F5D', endColorstr='#ff4E5667', GradientType=0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0;
+  bottom: 0;
+  text-align: center;
+  overflow: hidden;
+  padding-top: 5em;
+}
+
+.vr-menu-sidebar__nav > ul {
+  float:none !important;
+  li {
+    &.--active {
+      border-left: 5px solid #fff;
+      box-sizing: border-box;
+      background: $green;
+    }
+  }
+
+  a {
+    width: $nav-width;
+    display: block;
+    padding: 0;
+    font-size: 13px;
+
+    i {
+      margin-bottom: -1em;
+    }
+  }
+}
+
+input#search {
+  display: block;
+  font-size: 16px;
+  font-weight: 300;
+  width: 100%;
+  height: 45px;
+  margin: 0;
+  padding: 0 45px 0 15px;
+  border: 0;
+}
+
+.vr-content {
+ padding-top: 50px;
+}
+
+.nav-green {
+  background: $green !important;
+  color: #564F5D !important;
+  position: fixed;
+  z-index: 99999;
+
+  @at-root #{&}__login {
+    .login-button {
+      cursor: pointer;
+    }
+
+    .login-dropdown-list {
+      background: #546E7A;
+    }
+  }
+}
+
+.nav-green__search {
+  > .search-wrapper {
+    margin: 10px 12px;
+    transition: margin .25s ease;
+
+    i.material-icons {
+        position: absolute;
+        top: -7px;
+        right: 10px;
+        cursor: pointer;
+    }
+  }
+}
+
+.vr-icon {
+  position: relative;
+  top: 6px;
+}
+.btn-icon{
+
+  @at-root #{&}--push-right {
+    margin-right:.5em;
+  }
+}
+
+
+// Movie Item
+
+.movie-item-card {
+  input, textarea {
+    background: #484040;
+    padding: .5em;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    line-height: 1rem;
+    font-size: .8rem;
+    padding-top: .5rem !important;
+  }
+}

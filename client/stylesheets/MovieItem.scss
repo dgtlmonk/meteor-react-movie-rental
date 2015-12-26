@@ -1,0 +1,10 @@
+.movie-item-card {
+  // todo: extend col
+  background: #000;
+
+  @at-root #{&}__title {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 48px;
+  }
+}
