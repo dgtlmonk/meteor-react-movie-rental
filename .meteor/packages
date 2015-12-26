@@ -20,9 +20,11 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 insecure                # Allow all DB writes from clients (for prototyping)
 react
 matb33:collection-hooks
+miguelalarcos:react-model-mixins
 kadira:react-layout
 kadira:flow-router
 kadira:dochead
+
 arillo:flow-router-helpers
 fourseven:scss
 accounts-ui-unstyled
@@ -34,8 +36,11 @@ materialize:materialize
 alanning:roles
 victoransel:react-linkedstate-mixin
 aldeed:autoform
-meteorhacks:npm
+# meteorhacks:npm
+# npm-container
+# ccorcos:react-meteor
+universe:react-widgets
 
 
-npm-container
-ccorcos:react-meteor
+aldeed:simple-schema
+aldeed:collection2

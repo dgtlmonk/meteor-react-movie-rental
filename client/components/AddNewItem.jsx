@@ -1,6 +1,5 @@
 AddNewItem = React.createClass({
   mixins: [ReactMeteorData],
-
   getMeteorData() {
     // This is the place to subscribe to any data you need
     let handle =   Movies.find().fetch();

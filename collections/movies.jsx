@@ -1,12 +1,47 @@
 Movies = new Mongo.Collection("movies", {idGeneration: 'MONGO'});
+let Schemas = {};
+
+
+Schemas.Movies = new SimpleSchema({
+  name: {
+    type: String,
+    max: 150
+  },
+  director: {
+    type:String,
+    max: 70
+  },
+  desc: {
+    type: String
+  },
+  available: {
+    type: Boolean,
+    defaultValue: true
+  },
+  dateRented: {
+    type: Date,
+    label: 'Date Rented',
+    optional: true
+  },
+  dateDue: {
+    type: Date,
+    label: "Due date for return",
+    optional: true
+  },
+  copies: {
+    type: Number,
+    label: "Number of copies ",
+    min: 1,
+    defaultValue: 1
+  }
+});
+
+Movies.attachSchema(Schemas.Movies);
 
 if ( Meteor.isClient ) {
-
-
   let GenerateMongoID = ()=> {
     return new Meteor.Collection.ObjectID()._str;
   }
-
 
   if (Movies.find().count() === 0) {
     Movies.insert({
@@ -14,6 +49,7 @@ if ( Meteor.isClient ) {
       desc: 'During a preview tour, a theme park suffers a major power breakdown that allows its cloned dinosaur exhibits to run amok. (127 mins.)',
       director: 'Steven Spielberg',
       clip: 'https://www.youtube.com/watch?v=PJlmYh27MHg&list=PLZbXA4lyCtqrd-fXvh6kIIEpRDBLEnJs9',
+      available: false,
       _id: GenerateMongoID()
     });
 
@@ -33,7 +69,6 @@ if ( Meteor.isClient ) {
       _id: GenerateMongoID()
     });
 
-
     Movies.insert({
       name:"The Hangover (2009)", desc: "Three buddies wake up from a bachelor party in  Las Vegas, with no memory of the previous night and the bachelor missing. They make their way around the city in order to fin their friend before his weddding. (100 mins)",
       director:"Todd Phillips",
@@ -42,6 +77,7 @@ if ( Meteor.isClient ) {
     });
   }
 }
+
 if ( Meteor.isServer ) {
   Meteor.publish('movies', function() {
     return Movies.find();
