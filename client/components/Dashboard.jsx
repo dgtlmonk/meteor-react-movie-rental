@@ -39,7 +39,7 @@ Dashboard = React.createClass({
     return (
       <div className='row'>
           <h4>Movies</h4>
-          { this.renderMovies() }
+          {this.renderMovies()}
           <ConfirmDeleteMovieModal onOk={this.handleDeleteOk} movie={this.state.selectedMovie}/>
       </div>
     );

@@ -3,7 +3,9 @@
 MovieItem = React.createClass({
   mixins: [LinkedStateMixin],
   propTypes: {
-    movie: React.PropTypes.object.isRequired
+    movie: React.PropTypes.object.isRequired,
+    editMode: React.PropTypes.bool.isRequired,
+    onSelectMovie: React.PropTypes.func.isRequired
   },
 
   getInitialState: function() {
@@ -88,7 +90,10 @@ MovieItem = React.createClass({
                return (
                    <span>
                      <div className="col s12 right-align">
-                          <MovieItemMenu isEditMode={this.isEditMode()} onToggleEditMode={this.toggleEditMode}/>
+                          <MovieItemMenu
+                            isEditMode={this.isEditMode()}
+                            onToggleEditMode={this.toggleEditMode}
+                            onUpdate={this.handleUpdate}/>
                      </div>
                      <span className="movie-item-card__title">
                        <div className="col s6">
@@ -102,7 +107,7 @@ MovieItem = React.createClass({
                       <div className="col s6">
                          <i className="material-icons prefix">mode_edit</i>
                         <input
-                          defaultValue={ this.state.movie.director }
+                          defaultValue={this.state.movie.director}
                           ref="director"
                           type="text"/>
                       </div>
@@ -111,7 +116,7 @@ MovieItem = React.createClass({
                          <i className="material-icons prefix">mode_edit</i>
                         <textarea
                           className="materialize-textarea"
-                          defaultValue={ this.state.movie.desc}
+                          defaultValue={this.state.movie.desc}
                           ref="desc"/>
                       </div>
                      </span>
@@ -120,18 +125,25 @@ MovieItem = React.createClass({
                } else {
                  return (
                    <span>
-                       <MovieItemMenu isEditMode={this.isEditMode()} onToggleEditMode={this.toggleEditMode}  onDelete={this.handleDeleteConfirm}/>
+                       <MovieItemMenu
+                         isEditMode={this.isEditMode()}
+                         onToggleEditMode={this.toggleEditMode}
+                         onDelete={this.handleDeleteConfirm}/>
                        <span className="movie-item-card__title">
-                         { this.state.movie.name } - { this.state.movie.director }
+                         {this.state.movie.name} - {this.state.movie.director}
                        </span>
-                       <p> { this.state.movie.desc } </p>
+                       <p> {this.state.movie.desc} </p>
                    </span>
                  )
                }
               })()}
             <div className="card-action">
-               <a target="_blank" href={this.props.clip}><i className="material-icons vr-icon">movie</i> WATCH TRAILER</a>
-               <span className="right"><i className="fa fa-info-circle"></i> { this.state.movie.available ? 'Available': 'Unvailable'}</span>
+              <a target="_blank" href={this.state.movie.clip}>
+                 <i className="material-icons vr-icon">movie</i> WATCH TRAILER
+              </a>
+              <span className="right"><i className="fa fa-info-circle"></i>
+                { this.state.movie.available ? "Available" : "Unvailable"}
+              </span>
             </div>
           </div>
         </div>
