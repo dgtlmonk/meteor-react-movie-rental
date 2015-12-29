@@ -21,7 +21,8 @@ MovieItemMenu = React.createClass({
     return false;
   },
 
-  handleUpdate() {
+  handleUpdate(e) {
+    e.preventDefault();
     this.props.onUpdate();
   },
 
@@ -42,7 +43,7 @@ MovieItemMenu = React.createClass({
       if (this.props.isEditMode) {
         return (
           <div className="col s12 right-align">
-            <a className="btn-floating" onClick={this.handleToggleEditMode}><i className="fa fa-check-square-o"></i></a>
+            <a className="btn-floating" onClick={this.handleUpdate}><i className="fa fa-check-square-o"></i></a>
           </div>
         )
       } else {
@@ -55,7 +56,7 @@ MovieItemMenu = React.createClass({
               <i className="fa fa-trash"></i>
             </a>
             <a className={!this.isAdmin() ? 'hide' : btnClass}
-              onClick={this.handleUpdate}>
+              onClick={this.handleToggleEditMode}>
               <i className="fa fa-pencil-square-o"></i>
             </a>
           </div>

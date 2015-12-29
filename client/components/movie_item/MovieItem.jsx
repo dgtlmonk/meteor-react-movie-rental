@@ -38,7 +38,7 @@ MovieItem = React.createClass({
   handleDeleteConfirm() {
     this.handleSelectedMovie(this.state.movie);
     $('#confirmDeleteModal').openModal();
-    console.log('deletion confirmation ...');
+    //console.log('deletion confirmation ...');
   },
 
   handleSelectedMovie(movie){
@@ -49,8 +49,7 @@ MovieItem = React.createClass({
     this.toggleEditMode();
   },
 
-  handleUpdate(e) {
-    e.preventDefault();
+  handleUpdate() {
 
     // Get values via this.refs
     let data = {
@@ -128,6 +127,7 @@ MovieItem = React.createClass({
                        <MovieItemMenu
                          isEditMode={this.isEditMode()}
                          onToggleEditMode={this.toggleEditMode}
+                         onUpdate={this.handleUpdate}
                          onDelete={this.handleDeleteConfirm}/>
                        <span className="movie-item-card__title">
                          {this.state.movie.name} - {this.state.movie.director}
